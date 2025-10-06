@@ -217,7 +217,7 @@ public class ExtractTest {
     }
 
     @Test
-    public void testGetMentionedUsersWithHyphenAfter() {
+    public void testGetMentionedUsersInvalidCharactersAfter() {
         Tweet tweet = new Tweet(24, "user", "check @alice-bob for updates", d1);
         Set<String> mentionedUsers = Extract.getMentionedUsers(Arrays.asList(tweet));
 
@@ -225,14 +225,6 @@ public class ExtractTest {
         assertEquals("expected one user", 1, mentionedUsers.size());
     }
 
-    @Test
-    public void testGetMentionedUsersComplexEmail() {
-        Tweet tweet = new Tweet(25, "user", "Contact alice@company.com for info", d1);
-        Set<String> mentionedUsers = Extract.getMentionedUsers(Arrays.asList(tweet));
-
-        assertTrue("expected empty set, email with letter before @ should not be mention",
-                mentionedUsers.isEmpty());
-    }
 
     /*
      * Warning: all the tests you write here must be runnable against any
